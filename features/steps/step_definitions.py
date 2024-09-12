@@ -1,7 +1,7 @@
 from behave import given, when, then
 
-def example_method():
-    return 0
+import Main
+
 
 @given('I have a method')
 def step_impl(context):
@@ -10,7 +10,7 @@ def step_impl(context):
 
 @when('I call it')
 def step_impl(context):
-    context.answer = example_method()
+    context.answer = Main.example_method()
 
 
 @then('the result should be 0')

@@ -1,12 +1,7 @@
 from behave import given, when, then
 
-def method_with_examples(num, operation):
-    if operation == 'add':
-        return num + num
-    elif operation == 'multiply':
-        return num * num
-    else:
-        return Exception("Not a valid operation")
+import Main
+
 
 @given(u'I have a new method')
 def step_impl(context):
@@ -15,7 +10,7 @@ def step_impl(context):
 
 @when(u'I give it "{num:d}" and "{operation}"')
 def step_impl(context, num, operation):
-    context.answer = method_with_examples(num, operation)
+    context.answer = Main.method_with_examples(num, operation)
 
 
 @then(u'the result should be "{expected_answer:d}"')
