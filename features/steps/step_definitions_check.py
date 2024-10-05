@@ -7,11 +7,13 @@ def step_impl(context):
 
 @when(u'I give it permutation "{option}" and "{previous_option}" with "{reds:d}" reds and "{whites:d}" whites')
 def step_impl(context, option, previous_option, reds, whites):
-    print(option)
+    context.current_perm = [int(num.strip()) for num in option.split(',')]
+    context.previous_result_perm = [int(num.strip()) for num in previous_option.split(',')]
+    print(context.current_perm)
+    print(context.previous_result_perm)
     context.answer = True
-    return
 
 
 @then(u'the result will be "{expected_answer}"')
 def step_impl(context, expected_answer):
-    return context.answer == expected_answer
+    assert context.answer == True if expected_answer.lower() == 'true' else False
