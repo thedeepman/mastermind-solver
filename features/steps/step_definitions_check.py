@@ -9,8 +9,6 @@ def step_impl(context, option, previous_option, reds, whites):
     context.current_perm = [int(num.strip()) for num in option.split(',')]
     context.previous_result = Result([int(num.strip()) for num in previous_option.split(',')], reds, whites)
     context.previous_result_perm = [int(num.strip()) for num in previous_option.split(',')]
-    print(context.current_perm)
-    print(type(context.previous_result_perm))
 
 @when(u'I check if this permutation is valid')
 def step_impl(context):
@@ -19,4 +17,4 @@ def step_impl(context):
 
 @then(u'the result will be "{expected_answer}"')
 def step_impl(context, expected_answer):
-    assert context.answer == True if expected_answer.lower() == 'true' else False
+    assert context.answer == (True if expected_answer.lower() == 'true' else False)

@@ -7,5 +7,6 @@ Feature: Check if this permutation is valid against a previous result
 
     Examples:
       | option  | previous_option | red | white | answer |
-      | 0,1,2,3 | 1,2,3,0         | 0   | 3     | True   |
-      | 3,2,1,0 | 1,2,3,0         | 3   | 0     | False  |
+      | 0,1,2,3 | 1,2,3,4         | 0   | 3     | True   |
+      | 3,2,1,0 | 4,2,5,0         | 3   | 0     | False  |
+      | 3,2,1,0 | 4,2,5,0         | 2   | 0     | True   |
