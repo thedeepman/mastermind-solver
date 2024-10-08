@@ -30,8 +30,8 @@ Feature: Check if this permutation is valid against a previous result
     Examples:
       | guess   | answer  | red | white |
       | 0,1,2,3 | 1,2,3,4 | 0   | 3     |
-      | 3,2,1,0 | 4,2,5,0 | 3   | 0     |
       | 3,2,1,0 | 4,2,5,0 | 2   | 0     |
       | 1,1,2,3 | 1,2,3,4 | 1   | 2     |
-      | 3,4,1,0 | 4,4,5,0 | 3   | 0     |
+      | 3,4,1,0 | 4,4,5,0 | 2   | 0     |
       | 4,4,1,0 | 4,4,5,0 | 3   | 0     |
+      | 4,4,5,0 | 4,4,5,0 | 4   | 0     |

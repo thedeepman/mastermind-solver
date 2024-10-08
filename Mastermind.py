@@ -55,7 +55,10 @@ def generate_all_possibilities(repeats: bool, possible_colors: int, slots: int, 
         possibilities.append(current_possibility)
 
 def get_result(answer, guess):
-    return Result(guess, 0, 0)
+    if answer == guess:
+        return Result(guess, len(guess), 0)
+    reds = get_number_of_position_matches(answer, guess)
+    return Result(guess, reds, get_number_of_color_matches(answer, guess) - reds)
 
 
 def play_game(repeats: bool, possible_colors: int, slots: int, answer):
