@@ -20,3 +20,4 @@ Feature: Check if this permutation is valid against a previous result
       | option  | previous_option | red | white | answer |
       | 1,1,2,3 | 1,2,3,4         | 1   | 2     | True   |
       | 3,4,1,0 | 4,4,5,0         | 3   | 0     | False  |
+      | 4,4,1,0 | 4,4,5,0         | 3   | 0     | True   |
