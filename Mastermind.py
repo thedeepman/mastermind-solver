@@ -12,13 +12,13 @@ def get_number_of_position_matches(result, possible_option):
 
 
 def get_number_of_color_matches(result, possible_option):
-    matches = 0
-    colors_left = copy.deepcopy(possible_option) #TODO: Need different approach if repeats allowed
+    colors_left = copy.deepcopy(possible_option)
     for color_r in result:
         for color_o in colors_left:
             if color_r == color_o:
-                matches += 1
-    return matches
+                colors_left.remove(color_o)
+                break
+    return len(result) - len(colors_left)
 
 
 def check_if_valid(result:Result, perm):
