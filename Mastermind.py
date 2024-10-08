@@ -84,8 +84,18 @@ def solve_game(repeats: bool, possible_colors: int, slots: int, answer):
                 match = True
             else:
                 possibilities.pop(guess_index)
-                results.append(get_result(answer, guess))
+                guess_result = get_result(answer, guess)
+                print("Result: " + str(guess_result.reds) + " reds, " + str(guess_result.whites) + " whites")
+                if guess_result.reds == 0:
+                    for i in range(slots):
+                        for j in range(len(possibilities)-1):
+                            if possibilities[j][i] == guess[i]:
+                                possibilities[j] = None
+                        possibilities = [n for n in possibilities if n is not None]
+                results.append(guess_result)
 
 
 solve_game(False, 6, 4, [2,3,1,0])
+print()
+print()
 solve_game(True, 6, 4, [3,3,1,1])
