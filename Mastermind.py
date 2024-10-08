@@ -88,3 +88,4 @@ def solve_game(repeats: bool, possible_colors: int, slots: int, answer):
 
 
 solve_game(False, 6, 4, [2,3,1,0])
+solve_game(True, 6, 4, [3,3,1,1])

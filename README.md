@@ -11,6 +11,7 @@
 
 ### ToDo
 - Check if picking random permutations verses a more discriminatory approach yields better results 
+- Instead of just the solver, create actual game with UI and everything (solver can be used for a hint guess?)
 
 ### Instructions
 Standard python setup
