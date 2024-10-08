@@ -24,10 +24,8 @@ def get_number_of_color_matches(result, possible_option):
 
 def check_if_valid(result: Result, perm):
     if result.reds != get_number_of_position_matches(result.permutation, perm):
-        print("reds didn't match")
         return False
     elif result.whites != (get_number_of_color_matches(result.permutation, perm) - result.reds):
-        print("whites didn't match")
         return False
     return True
 
@@ -61,22 +59,32 @@ def get_result(answer, guess):
     return Result(guess, reds, get_number_of_color_matches(answer, guess) - reds)
 
 
-def play_game(repeats: bool, possible_colors: int, slots: int, answer):
+def solve_game(repeats: bool, possible_colors: int, slots: int, answer):
     if len(answer) != slots:
         exception("Answer does not match number of slots")
     possibilities = []
     generate_all_possibilities(repeats, possible_colors, slots, possibilities)
-    guess = 0
+    guess_number = 0
+    results = []
     match = False
     while not match:
         guess_index = random.randint(0,len(possibilities)-1)
-        guess += 1
-        if possibilities[guess_index] == answer:
-            print("Found a match in " + str(guess) + " guesses!")
-            print(len(possibilities))
-            match = True
-        else:
-            possibilities.pop(guess_index)
+        guess = possibilities[guess_index]
+        should_guess = True
+        for result in results:
+            if not check_if_valid(result, guess):
+                should_guess = False
+                possibilities.pop(guess_index)
+                break
+        if should_guess:
+            guess_number += 1
+            print("Guess is " + str(guess) + " out of " + str(len(possibilities)) + " possibilities")
+            if guess == answer:
+                print("Found a match in " + str(guess_number) + " guesses!")
+                match = True
+            else:
+                possibilities.pop(guess_index)
+                results.append(get_result(answer, guess))
 
 
-play_game(False, 6, 4, [2,3,1,0])
+solve_game(False, 6, 4, [2,3,1,0])
